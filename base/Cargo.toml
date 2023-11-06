@@ -1,0 +1,12 @@
+[package]
+name = "w3-base"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+serde = ["dep:serde"]
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"], optional = true }
+thiserror = "1.0.49"
+w3-derive = { path = "../derive" }

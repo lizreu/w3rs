@@ -1,0 +1,20 @@
+[package]
+name = "w3-map"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+serde = ["dep:serde"]
+
+[dependencies]
+atoi = "2.0.0"
+num-traits = "0.2.16"
+w3-base = { path = "../base" }
+
+serde = { version = "1.0", features = ["derive"], optional = true }
+bitflags = "2.4.0"
+include_dir = "0.7.3"
+
+# TODO: choose seeding strategy, but probably unimportant
+ahash = { version = "0.8.3", default-features = false }
+log = "0.4.20"

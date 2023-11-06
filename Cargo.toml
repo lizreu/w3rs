@@ -1,0 +1,19 @@
+[workspace]
+resolver = "2"
+members = [
+    "jassparse",
+    "sys",
+    "std",
+    "test",
+    "base",
+    "map",
+    "derive",
+    "derive-impl",
+]
+
+[profile.release]
+# lto = true
+# opt-level = "z"
+# debug = false
+# debug-assertions = false
+# codegen-units = 1

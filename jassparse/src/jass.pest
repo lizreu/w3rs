@@ -1,0 +1,40 @@
+WHITESPACE = _{ " " | "\t" | NEWLINE }
+COMMENT = _{ "//" ~ (!NEWLINE ~ ANY)* }
+
+jass = {
+    SOI ~ (globalblock | nativedecl | typedecl)* ~ EOI
+}
+
+ident = @{ (ASCII_ALPHA | "_") ~ (ASCII_ALPHA | ASCII_DIGIT | "_")* }
+typedecl = { "type" ~ ident ~ "extends" ~ ident }
+nativedecl = { "constant"? ~ "native" ~ #name=ident ~ "takes" ~ #params=paramlist ~ "returns" ~ #returnty=ident }
+param = { #ty=ident ~ #name=ident }
+paramlist = { "nothing" | (param ~ ("," ~ param)*) }
+
+globalblock = { "globals" ~ globaldecl* ~ "endglobals" }
+globaldecl = { "constant"? ~ #ty=ident ~ #name=ident ~ "=" ~ #value=expr }
+
+integer = @{ ASCII_DIGIT+ }
+hexinteger = @{ "$" ~ ASCII_HEX_DIGIT+ }
+intcode = @{ "'" ~ ASCII_ALPHANUMERIC ~ ASCII_ALPHANUMERIC ~ ASCII_ALPHANUMERIC ~ ASCII_ALPHANUMERIC ~ "'" }
+
+funccall = { #name=ident ~ "(" ~ #args=expr? ~ ")" }
+
+literal = { 
+    "null" | 
+    "true" | 
+    "false" | 
+    integer | 
+    hexinteger |
+    intcode
+}
+
+expr = _{ primary ~ (binop ~ primary)* }
+primary = _{ literal | funccall | "(" ~ expr ~ ")" }
+binop = {
+    "+" | 
+    "-" | 
+    "*" | 
+    "/" 
+}
+

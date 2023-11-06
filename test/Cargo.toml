@@ -1,0 +1,13 @@
+[package]
+name = "w3-wasm-test"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+w3-std = { path = "../std" }
+w3-sys = { path = "../sys" }
+
+[[bin]]
+name = "war3map"
+path = "src/main.rs"
+

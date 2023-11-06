@@ -1,0 +1,9 @@
+[package]
+name = "w3-derive-impl"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+proc-macro2 = "1.0.66"
+quote = "1.0.31"
+syn = "2.0.26"

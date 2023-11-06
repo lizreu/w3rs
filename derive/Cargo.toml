@@ -1,0 +1,10 @@
+[package]
+name = "w3-derive"
+version = "0.1.0"
+
+[dependencies]
+w3-derive-impl = { path = "../derive-impl" }
+
+[lib]
+proc-macro = true
+

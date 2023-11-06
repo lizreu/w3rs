@@ -1,0 +1,13 @@
+[package]
+name = "w3-std"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+num-traits = "0.2.15"
+slab = "0.4.8"
+
+w3-sys = { path = "../sys" }
+w3-derive = { path = "../derive" }
+rustc-hash = "1.1.0"
+futures = "0.3.28"
